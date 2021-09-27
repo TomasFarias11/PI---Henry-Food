@@ -27,6 +27,7 @@ router.route('/recipes/:idRecipie')
     const {idRecipie} = req.params;
         try {
             let foods = await showAll();
+            console.log(foods[0].ID);
             let idFoods = await foods.find(e => e.ID === idRecipie);
             console.log(idFoods);
             res.json(idFoods);
