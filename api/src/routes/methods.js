@@ -11,15 +11,17 @@ module.exports = {
                         name: e.title,
                         summary: e.summary,
                         healthScore: e.healthScore,
-                        spoonacularScore: e.spoonacularScore,
-                        steps: e.analyzedInstructions.length>0?e.analyzedInstructions[0].steps[0].step:'no steps found',
+                        spoonacularScore: e.spoonacularScore,                                                                                                    
+                        steps: (e.analyzedInstructions.length>0 && Array.isArray(e.analyzedInstructions[0].steps))?e.analyzedInstructions[0].steps.map(ele=>`step ${ele.number}: ${ele.step}`) :'no steps found',
                         img: e.image,
                         vegetarian: e.vegetarian,
                         vegan: e.vegan,
                         glutenFree: e.glutenFree,
                         diets: e.diets.map(e => e),
                         typeFood: e.dishTypes.map(e => e),
-                    }))
+                        }
+                    )
+                )
                     return foods;
                 })
             .catch(err => console.log(err));
@@ -38,7 +40,7 @@ module.exports = {
                     summary: e.summary,
                     healthScore: e.healthScore,
                     spoonacularScore: e.spoonacularScore,
-                    steps: e.analyzedInstructions.length>0?e.analyzedInstructions[0].steps : 'no steps',
+                    steps: (e.analyzedInstructions.length>0 && Array.isArray(e.analyzedInstructions[0].steps))?e.analyzedInstructions[0].steps.map((e,i)=>`step${i+1}: ${e.step}`) :'no steps found',
                     img: e.image,
                     // vegetarian: e.vegetarian,
                     // vegan: e.vegan,
@@ -63,7 +65,7 @@ module.exports = {
                         summary: res.summary,
                         healthScore: res.healthScore,
                         spoonacularScore: res.spoonacularScore,
-                        steps: res.analyzedInstructions.length>0?res.analyzedInstructions[0].steps : 'no steps',
+                        steps: (res.analyzedInstructions.length>0 && Array.isArray(res.analyzedInstructions[0].steps))?res.analyzedInstructions[0].steps.map((e,i)=>`step${i+1}: ${e.step}`) :'no steps found',
                         img: res.image,
                         vegetarian: res.vegetarian,
                         vegan: res.vegan,
