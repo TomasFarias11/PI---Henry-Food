@@ -11,9 +11,9 @@ function App() {
       <div className="App">
         <Switch>
           <Route exact path="/" component = {LandingPage}></Route>
-          <Route path= "/recipes" component = {Home}></Route>
-          <Route path= "/recipes/:id" component = {Details}></Route>
-          <Route path= "/recipe" component = {RecipeCreater}></Route>
+          <Route exact path= "/recipes" component = {Home}></Route>
+          <Route exact path= "/recipes/:id" render = {({match}) => <Details props={match.params.id}/>}></Route>
+          <Route exact path= "/recipe" component = {RecipeCreater}></Route>
         </Switch>
       </div>
     </BrowserRouter>

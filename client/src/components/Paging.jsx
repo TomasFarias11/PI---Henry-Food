@@ -1,5 +1,7 @@
 import React from 'react';
 
+import Style from "./Paging.module.css";
+
 export default function Paged ({recipesPerPage, recipes, paged}) {
     const pageNumber = [];
 

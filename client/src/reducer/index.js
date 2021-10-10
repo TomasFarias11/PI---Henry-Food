@@ -3,11 +3,13 @@ const initialState = {
     recipes: [],
     allRecipies: [],
     diets: [],
+    recipesById: {}
 }
 
 function rootReducer (state = initialState, action) {
     switch(action.type) {
         case 'GET_RECIPES':
+            state = initialState
             return{
                 ...state,
                 recipes: state.recipes.concat(action.payload),
@@ -23,7 +25,7 @@ function rootReducer (state = initialState, action) {
         case 'GET_RECIPES_BY_ID':
             return {
                 ...state,
-                recipes: action.payload
+                recipesById: action.payload
             }
 
         case 'POST_RECIPE':

@@ -1,0 +1,32 @@
+.searchStyle {
+    display: flex;
+    position: relative;
+    top: -120px;
+    width: 200px;
+    height: 35px;
+    font-size: 20px;
+}
+
+.buttonStyle {
+    display: flex;
+    cursor: pointer;
+    position: relative;
+    top: -161px;
+    left: 210px;
+    width: 80px;
+    height: 42px;
+    font-size: 18px;
+    justify-content: center;
+}
+
+.button:hover {
+    background-color: transparent;
+    transform: translate(5px, 0px);
+
+}
+
+.divClass {
+    position: absolute;
+    top: 140px;
+    left: 0px;
+}

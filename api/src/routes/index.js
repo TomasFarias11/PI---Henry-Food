@@ -30,7 +30,7 @@ router.route('/recipes')
             })
             if (Array.isArray(nameFoods) && nameFoods.length === 0 && Array.isArray(dbFood) && dbFood.length === 0) return res.status(404).send('No recipes found with that name.');
 
-            res.json([...nameFoods, ...dbFood]);
+            res.json([...dbFood, ...nameFoods]);
         }
         catch (err) {
             res.json({ 
@@ -41,9 +41,8 @@ router.route('/recipes')
         try {
             let foods = await showAll();
             let dbFood = await recipe.findAll();
-            // if (Array.isArray(foods) && foods.length === 0 && Array.isArray(dbFood) && dbFood.length === 0) return res.status(404).send('No recipes found.');
-            res.json(foods);
-            // res.json([...foods, ...dbFood]);
+            if (Array.isArray(foods) && foods.length === 0 && Array.isArray(dbFood) && dbFood.length === 0) return res.status(404).send('No recipes found.');
+            res.json([...foods, ...dbFood]);
         }
         catch (err) {
             res.json({
@@ -63,6 +62,7 @@ router.route('/recipes/:idRecipie')
             let idFoodsDB = await recipe.findByPk(idRecipie, {include: {
                 model: dietType
             }});
+            console.log(idFoodsDB);
             if (idFoodsDB) return res.json(idFoodsDB);
             res.status(404).send('No recipe found.');
         }

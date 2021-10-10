@@ -1,0 +1,13 @@
+.style {
+    position: center;
+}
+
+.button {
+    position: relative;
+    margin: 20px 50px;
+    /* top: 100%; */
+    left: 40%;
+    width: 10%;
+    background-color: red;
+    /* width: 10%; */
+}
