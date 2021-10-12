@@ -12,13 +12,13 @@ module.exports = {
                         summary: e.summary,
                         healthScore: e.healthScore,
                         spoonacularScore: e.spoonacularScore,                                                                                                    
-                        steps: (e.analyzedInstructions.length>0 && Array.isArray(e.analyzedInstructions[0].steps))?e.analyzedInstructions[0].steps.map(ele=>`step ${ele.number}: ${ele.step}`) :'no steps found',
+                        steps: (e.analyzedInstructions.length>0 && Array.isArray(e.analyzedInstructions[0].steps))?e.analyzedInstructions[0].steps.map(ele=>`step ${ele.number}: ${ele.step}`) :'No steps found',
                         img: e.image,
                         vegetarian: e.vegetarian,
                         vegan: e.vegan,
                         glutenFree: e.glutenFree,
-                        diets: e.diets.map(e => e),
-                        typeFood: e.dishTypes.map(e => e),
+                        dietTypes:  e.diets.map((e)=>({name: e})),                //e.diets=['hola','hla','vege']==>[{name:'hola'},{name:'hla'},{name:'vege'}]
+                        typeFood: e.dishTypes,
                         }
                     )
                 )
@@ -40,12 +40,9 @@ module.exports = {
                     summary: e.summary,
                     healthScore: e.healthScore,
                     spoonacularScore: e.spoonacularScore,
-                    steps: (e.analyzedInstructions.length>0 && Array.isArray(e.analyzedInstructions[0].steps))?e.analyzedInstructions[0].steps.map((e,i)=>`step${i+1}: ${e.step}`) :'no steps found',
+                    steps: (e.analyzedInstructions.length>0 && Array.isArray(e.analyzedInstructions[0].steps))?e.analyzedInstructions[0].steps.map((e,i)=>`step${i+1}: ${e.step}`) :'No steps found',
                     img: e.image,
-                    // vegetarian: e.vegetarian,
-                    // vegan: e.vegan,
-                    // glutenFree: e.glutenFree,
-                    // diets: e.diets,
+                    dietTypes: e.diets.map((el)=>({name: el})),
                     typeFood: e.dishTypes,
                 })
             })
@@ -65,12 +62,12 @@ module.exports = {
                         summary: res.summary,
                         healthScore: res.healthScore,
                         spoonacularScore: res.spoonacularScore,
-                        steps: (res.analyzedInstructions.length>0 && Array.isArray(res.analyzedInstructions[0].steps))?res.analyzedInstructions[0].steps.map((e,i)=>`step${i+1}: ${e.step}`) :'no steps found',
+                        steps: (res.analyzedInstructions.length>0 && Array.isArray(res.analyzedInstructions[0].steps))?res.analyzedInstructions[0].steps.map((e,i)=>`step${i+1}: ${e.step}`) :'No steps found',
                         img: res.image,
                         vegetarian: res.vegetarian,
                         vegan: res.vegan,
                         glutenFree: res.glutenFree,
-                        diets: res.diets,
+                        dietTypes: res.diets.map((e)=>({name: e})),
                         typeFood: res.dishTypes,
                     }
                     return food;

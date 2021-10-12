@@ -1,12 +1,18 @@
 .box {
-    width: 320px;
+    width: 350px;
+    height: 350px;
     margin: 10px 50px;
     padding: 20px;
-    /* position: relative; */
-    /* top: 150px; */
-    /* background-color: #969696; */
-    /* border: solid 1px black; */
     box-shadow: black inset -5px -5px 5px;
-    border-radius: 10px;
+    border-radius: 30px;
     background-color:white;
+}
+
+.score {
+    margin-left: 25px;
+    padding: 20px;
+}
+
+.cards {
+    max-width: 190vw;
 }

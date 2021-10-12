@@ -1,13 +1,31 @@
-.style {
-    position: center;
-}
 
 .button {
-    position: relative;
+    position: absolute;
     margin: 20px 50px;
-    /* top: 100%; */
-    left: 40%;
+    left: 20px;
     width: 10%;
+    height: 70px;
+    font-size: 20px;
+    cursor: pointer;
+    border-radius: 15px;
+}
+
+.button:hover {
     background-color: red;
-    /* width: 10%; */
+}
+
+.vid {
+    background: #7DD174;
+    overflow: hidden;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+
+.mainTitle {
+    color: white;
+    position: absolute;
+    left: 700px;
 }

@@ -12,6 +12,10 @@
     left: 45%;
 }
 
+.buttonHomePage:hover {
+    background-color: red;
+}
+
 .name {
     color: white;
     font-size: 25px;
@@ -132,10 +136,15 @@
 .buttonCreater {
     width:180px;
     height:50px;
+    cursor: pointer;
     font-size: 20px;
     position: absolute;
     top: 820px;
     left: 865px;
+}
+
+.buttonCreater:hover {
+    background-color: red;
 }
 
 .boxDiets {

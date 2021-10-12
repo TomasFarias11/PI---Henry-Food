@@ -8,8 +8,10 @@
 }
 
 .buttonToCreate {
-    grid-column-start: 1;
-    grid-row-start: 2;
+    grid-column-start: 3;
+    grid-row-start: 3;
+    margin-left: 120px;
+    margin-top: -400px;
     justify-self: stretch;
     align-self: flex-end;
     
@@ -23,15 +25,16 @@
 }
 
 .buttonCreate:hover {
-    /* color: skyblue; */
     background-color:red
 }
 
 .title {
+    font-family:'Times New Roman', Times, serif;
+    font-size: 20px;
     color: white;
     grid-column-start: 2;
     grid-row-start: 1;
-    margin-left: 190px;
+    margin-left: 110px;
     align-self: flex-end;
     display: flex;
     justify-self: center;
@@ -92,18 +95,29 @@
     font-weight:normal;
   }
 
-.pages {
-    display: flex;
-    flex-direction: column;
-    position: absolute;
-    left: 700px;
-    top: 80px;
+.corrector {
+  max-width: 90vw;
+  max-height: 90vh;
 }
 
 .cards {
+    max-width: 99%;
+    overflow: scroll;
     display: flex;
     flex-direction: row;
     position: absolute;
-    top: 500px;
+    top: 520px;
 }
 
+::-webkit-scrollbar {
+  width: 0px;
+  height: 9px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 50);
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0);
+}

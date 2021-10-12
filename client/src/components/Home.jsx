@@ -49,7 +49,7 @@ export default function Home () {
                 <Link to="/recipe"><button className={Style.buttonCreate}>Create your recipe!</button></Link>
             </div>
             <div className={Style.title}>
-                <h1>Food Recipes</h1>
+                <h1>Food Recipes Main Page!</h1>
             </div>
             <div className={Style.filters}>
                 <select className = {Style.dietStyle} onChange={e => handleFilterRecipesByLetter(e)}>
@@ -77,7 +77,7 @@ export default function Home () {
                 </select>
             </div>
             <div>
-                <div className={Style.pages}>
+                <div>
                     <Paged
                     recipesPerPage = {recipesPerPage}
                     recipes = {recipes.length}
@@ -87,9 +87,9 @@ export default function Home () {
                 <div className = {Style.cards}>
                     {currentRecipes?currentRecipes.map((e) => {
                         return (
-                            <div key={e.name}>
-                                <RecipeCard name={e.name} img={e.img} diets={e.diets} spoonacularScore = {e.spoonacularScore} key={e.ID} id={e.ID}/>
-                        </div>
+                            <div key={e.name} className={Style.corrector}>
+                                <RecipeCard name={e.name} img={e.img} dietTypes={e.dietTypes} spoonacularScore = {e.spoonacularScore} key={e.ID} id={e.ID}/>
+                            </div>
                         )
                     }): <h1>No recipes</h1>}
                 </div>

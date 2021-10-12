@@ -25,7 +25,7 @@ const validate = (input) =>  {
 export default function RecipeCreater () {
     const dispatch = useDispatch();
     const history = useHistory();
-    const diets = useSelector((state) => state.diets);
+    const diets = useSelector((state) => state.dietTypes);
     const [errors, setErrors] = useState({});
 
     const [input, setInput] = useState({
@@ -139,7 +139,8 @@ export default function RecipeCreater () {
                 
                 <div className={Style.boxDiets}>
                     <label>
-                        {diets.map((e, index) => { return (
+                        {diets.map((e, index) => { 
+                            return (
                             <div key = {e.name}>
                                 <span>{e.name}</span>
                                 <input type="checkbox" name = {e.name} value = {index + 1} onChange = {handleCheckBox}/>

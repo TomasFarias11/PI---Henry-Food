@@ -5,6 +5,7 @@
     width: 200px;
     height: 35px;
     font-size: 20px;
+    box-shadow: black inset -5px -3px 3px;
 }
 
 .buttonStyle {
@@ -17,6 +18,7 @@
     height: 42px;
     font-size: 18px;
     justify-content: center;
+    box-shadow: black inset -3px -3px 3px;
 }
 
 .button:hover {

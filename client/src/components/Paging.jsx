@@ -8,14 +8,14 @@ export default function Paged ({recipesPerPage, recipes, paged}) {
     for (let i = 1; i <= Math.ceil(recipes/recipesPerPage); i++) {
         pageNumber.push(i)
     }
-    console.log(pageNumber);
+
     return (
         <nav>
-            <ul className="paged">
+            <ul className={Style.pages}>
                 { pageNumber && pageNumber.map(number => {
                     return (
                         <li className="number" key = {number}>
-                            <button onClick = {() => paged(number)}>{number}</button>
+                            <button className = {Style.paging} onClick = {() => paged(number)}>{number}</button>
                         </li>
                             ) 
                 })}

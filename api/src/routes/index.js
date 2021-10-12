@@ -39,8 +39,11 @@ router.route('/recipes')
         }
     } else {
         try {
-            let foods = await showAll();
-            let dbFood = await recipe.findAll();
+            let foods = await showAll(); //[{dietTypes}] me escuchas?
+            let dbFood = await recipe.findAll({
+                include: {
+                    model: dietType
+            }}); //
             if (Array.isArray(foods) && foods.length === 0 && Array.isArray(dbFood) && dbFood.length === 0) return res.status(404).send('No recipes found.');
             res.json([...foods, ...dbFood]);
         }
@@ -62,7 +65,6 @@ router.route('/recipes/:idRecipie')
             let idFoodsDB = await recipe.findByPk(idRecipie, {include: {
                 model: dietType
             }});
-            console.log(idFoodsDB);
             if (idFoodsDB) return res.json(idFoodsDB);
             res.status(404).send('No recipe found.');
         }
@@ -91,7 +93,6 @@ router.route('/recipe')
         const {name, summary, healthScore, spoonacularScore, diet, steps} = req.body;
         try {
             const diets = await Promise.all(diet.map((e) => dietType.findByPk(e)));
-            console.log(diets);
             const [Recipe, created] = await recipe.findOrCreate({
                 where: {name, summary, healthScore, spoonacularScore, steps }
             })

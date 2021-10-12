@@ -2,7 +2,7 @@
 const initialState = {
     recipes: [],
     allRecipies: [],
-    diets: [],
+    dietTypes: [],
     recipesById: {}
 }
 
@@ -32,25 +32,38 @@ function rootReducer (state = initialState, action) {
             return {
                 ...state,
                 // recipes: state.recipes.concat(action.payload)
-
             }
         
         case 'GET_DIETS':
             return {
                 ...state,
-                diets: action.payload
+                dietTypes: action.payload
             }
 
         case 'FILTER_RECIPES_BY_DIETS':
             const allRecipes = state.allRecipes;  //para no modificar recipes, que es donde tengo TODAS las recetas
-            const filterOfDiets = action.payload === 'All' ? allRecipes : allRecipes.filter(r => r.diets.includes(action.payload))
+
+            let filterOfDiets=[]
+                for(let i=0;i<allRecipes.length;i++){
+                    for(let j=0;j<allRecipes[i].dietTypes.length;j++){
+                        
+                        if(allRecipes[i].dietTypes[j].name===action.payload){
+                            filterOfDiets.push(allRecipes[i])
+                        }else{
+                            continue 
+                        }
+                    }
+                }
+                
+                if (filterOfDiets.length===0) state.recipes = state.allRecipes
+                else state.recipes.length=0 
+                
             return {
                 ...state,
-                recipes: filterOfDiets
+                recipes: state.recipes.concat(filterOfDiets) 
             }
 
         case 'FILTER_RECIPES_BY_LETTER':{
-            // const allRecipes = state.allRecipes;
             //                  if(        ↓            ↓    )↓ -------else↓if(                      )                    
             const filterByLetter = action.payload === 'None'  ? state.recipes : action.payload === 'asc' ? 
                 state.recipes.sort(function (a, b) {
@@ -80,7 +93,7 @@ function rootReducer (state = initialState, action) {
         }
 
         case 'FILTER_RECIPES_BY_PUNCTUATION':
-            // const allRecipes = state.allRecipies;
+
             const filterByPunctuation = action.payload === 'None'  ? state.recipes : action.payload === 'ascPoint' ?
             state.recipes.sort(function (a, b) {
                 if (a.spoonacularScore > b.spoonacularScore) {
