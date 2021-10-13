@@ -3,7 +3,7 @@ import axios from 'axios';
 export function getRecipes() {
     return async function (dispatch) {
         let recipes = await axios.get("http://localhost:3001/recipes")
-        return dispatch({
+        return dispatch({            //las maneras de escribir las acciones asincronicas usando thunk
             type: 'GET_RECIPES',
             payload: recipes.data
         })
@@ -46,9 +46,12 @@ export function getRecipesById (id) {
 }
 
 export function postRecipe (payload) {
-    return async function (dispatch) {
-        const recipeCreated = await axios.post(`http://localhost:3001/recipe`, payload)
-        return recipeCreated
+    return function (dispatch) {
+        axios.post(`http://localhost:3001/recipe`, payload)
+            .then((e) =>  e)
+            .catch((err) => {
+                console.error(err)
+            })
     }
 }
 

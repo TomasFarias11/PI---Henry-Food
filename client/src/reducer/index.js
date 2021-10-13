@@ -12,7 +12,7 @@ function rootReducer (state = initialState, action) {
             state = initialState
             return{
                 ...state,
-                recipes: state.recipes.concat(action.payload),
+                recipes: state.recipes.concat(action.payload),                                                  //guardo lo mismo para volver a modificarlo
                 allRecipes: state.allRecipies.concat(action.payload)
             }
 
@@ -31,7 +31,7 @@ function rootReducer (state = initialState, action) {
         case 'POST_RECIPE':
             return {
                 ...state,
-                // recipes: state.recipes.concat(action.payload)
+
             }
         
         case 'GET_DIETS':
@@ -47,7 +47,7 @@ function rootReducer (state = initialState, action) {
                 for(let i=0;i<allRecipes.length;i++){
                     for(let j=0;j<allRecipes[i].dietTypes.length;j++){
                         
-                        if(allRecipes[i].dietTypes[j].name===action.payload){
+                        if(allRecipes[i].dietTypes[j].name===action.payload){ 
                             filterOfDiets.push(allRecipes[i])
                         }else{
                             continue 
@@ -64,18 +64,18 @@ function rootReducer (state = initialState, action) {
             }
 
         case 'FILTER_RECIPES_BY_LETTER':{
-            //                  if(        ↓            ↓    )↓ -------else↓if(                      )                    
+                   
             const filterByLetter = action.payload === 'None'  ? state.recipes : action.payload === 'asc' ? 
                 state.recipes.sort(function (a, b) {
                     if (a.name > b.name) {
-                        return 1;                                       //Se resuelve el if si es true
+                        return 1;
                     }
                     if (b.name > a.name) {
                         return -1;
                     }
                     return 0;
                 })
-                :           //else
+                : 
                 state.recipes.sort(function (a, b) {
                     if (a.name > b.name) {
                         return -1;                                       

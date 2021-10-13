@@ -18,8 +18,6 @@ router.route('/recipes')
     const {name} = req.query;
     if (name) {
         try {
-            
-            
             let nameFoods = await showByName(name);
             let dbFood = await recipe.findAll({
                 where: {
@@ -39,11 +37,11 @@ router.route('/recipes')
         }
     } else {
         try {
-            let foods = await showAll(); //[{dietTypes}] me escuchas?
+            let foods = await showAll(); 
             let dbFood = await recipe.findAll({
                 include: {
                     model: dietType
-            }}); //
+            }}); 
             if (Array.isArray(foods) && foods.length === 0 && Array.isArray(dbFood) && dbFood.length === 0) return res.status(404).send('No recipes found.');
             res.json([...foods, ...dbFood]);
         }
@@ -90,7 +88,7 @@ router.route('/types')
 
 router.route('/recipe')
     .post(async (req, res) => {
-        const {name, summary, healthScore, spoonacularScore, diet, steps} = req.body;
+        const {name, summary, healthScore, spoonacularScore, diet, steps} = req.body; 
         try {
             const diets = await Promise.all(diet.map((e) => dietType.findByPk(e)));
             const [Recipe, created] = await recipe.findOrCreate({

@@ -64,17 +64,22 @@ export default function RecipeCreater () {
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        dispatch(postRecipe(input))
-        alert("Recipe Created!")
-        setInput({
-            name: "",
-            summary: "",
-            spoonacularScore: "",
-            healthScore: "",
-            steps: "",
-            diet: []
-        })
-        history.push('/recipes')
+        let errors = Object.keys(validate(input))
+        if (errors.length !== 0) {
+            alert('Rellenar los campos')
+        } else {
+            dispatch(postRecipe(input))
+            alert("Recipe Created!")
+            setInput({
+                name: "",
+                summary: "",
+                spoonacularScore: "",
+                healthScore: "",
+                steps: "",
+                diet: []
+            })
+            history.push('/recipes')
+        }
     }
 
     return (

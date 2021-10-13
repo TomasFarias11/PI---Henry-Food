@@ -17,7 +17,7 @@ module.exports = {
                         vegetarian: e.vegetarian,
                         vegan: e.vegan,
                         glutenFree: e.glutenFree,
-                        dietTypes:  e.diets.map((e)=>({name: e})),                //e.diets=['hola','hla','vege']==>[{name:'hola'},{name:'hla'},{name:'vege'}]
+                        dietTypes:  e.diets.map((e)=>({name: e})),
                         typeFood: e.dishTypes,
                         }
                     )

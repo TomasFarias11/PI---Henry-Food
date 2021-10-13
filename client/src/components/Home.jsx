@@ -12,10 +12,10 @@ import Style from './Home.module.css';
 
 
 export default function Home () {
-    const dispatch = useDispatch();
+    const dispatch = useDispatch();                                                                                                     //guardar una funcion en dispatch que recibe por parametro la accion y la despacha
     const recipes = useSelector((state) => state.recipes)
-    const [currentPage, setCurrentPage] = useState(1); //guardamos en un estado local la pagina actual, arranca en uno porque la pagina arranca en la uno
-    const [recipesPerPage, setRecipesPerPage] = useState(9) //para setear cuantas recetas quiero por pagina
+    const [currentPage, setCurrentPage] = useState(1); 
+    const [recipesPerPage, setRecipesPerPage] = useState(9) 
 
     const paging = (pageNumber) => {
         setCurrentPage(pageNumber);
@@ -24,7 +24,7 @@ export default function Home () {
     useEffect (() => {
         dispatch(getRecipes()); 
     }, [])
-    // useEffect se utiliza cuando se crea, actualiza o muere un componente. Dispatch manda las acciones al store.
+
 
     const indexOfLastRecipe = currentPage * recipesPerPage;
     const indexOfFirstRecipe = indexOfLastRecipe - recipesPerPage;
