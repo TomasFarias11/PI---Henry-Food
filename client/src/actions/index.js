@@ -2,7 +2,7 @@ import axios from 'axios';
 
 export function getRecipes() {
     return async function (dispatch) {
-        let recipes = await axios.get("http://localhost:3001/recipes")
+        let recipes = await axios.get("/recipes")
         return dispatch({            //las maneras de escribir las acciones asincronicas usando thunk
             type: 'GET_RECIPES',
             payload: recipes.data
@@ -13,7 +13,7 @@ export function getRecipes() {
 export function getRecipesByName(name) {
     return async function (dispatch) {
         try {
-            let recipesName = await axios.get(`http://localhost:3001/recipes?name=${name}`)
+            let recipesName = await axios.get(`/recipes?name=${name}`)
             return dispatch({
                 type: 'GET_RECIPES_BY_NAME',
                 payload: recipesName.data
@@ -27,7 +27,7 @@ export function getRecipesByName(name) {
 
 export function getDiets () {
     return async function (dispatch) {
-        let diets = await axios.get(`http://localhost:3001/types`)
+        let diets = await axios.get(`/types`)
         return dispatch({
             type: "GET_DIETS",
             payload: diets.data
@@ -37,7 +37,7 @@ export function getDiets () {
 
 export function getRecipesById (id) {
     return async function (dispatch) {
-        let recipesId = await axios.get(`http://localhost:3001/recipes/${id}`)
+        let recipesId = await axios.get(`/recipes/${id}`)
         return dispatch({
             type: 'GET_RECIPES_BY_ID',
             payload: recipesId.data
@@ -47,7 +47,7 @@ export function getRecipesById (id) {
 
 export function postRecipe (payload) {
     return function (dispatch) {
-        axios.post(`http://localhost:3001/recipe`, payload)
+        axios.post(`/recipe`, payload)
             .then((e) =>  e)
             .catch((err) => {
                 console.error(err)

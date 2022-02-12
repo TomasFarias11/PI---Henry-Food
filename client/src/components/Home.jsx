@@ -6,13 +6,12 @@ import {Link} from "react-router-dom";
 import RecipeCard from "./Card.jsx"
 import Paged from "./Paging.jsx";
 import SearchBar from "./SearchBar";
-import RecipeCreated from "./RecipeCreated.jsx";
 
 import Style from './Home.module.css';
 
 
 export default function Home () {
-    const dispatch = useDispatch();                                                                                                     //guardar una funcion en dispatch que recibe por parametro la accion y la despacha
+    const dispatch = useDispatch();       
     const recipes = useSelector((state) => state.recipes)
     const [currentPage, setCurrentPage] = useState(1); 
     const [recipesPerPage, setRecipesPerPage] = useState(9) 
